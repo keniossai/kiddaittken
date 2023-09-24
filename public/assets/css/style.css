@@ -8206,14 +8206,15 @@ h1, h2, h3, h4, h5,
     width: 100%; }
     .login-wrap .social a {
       width: 100%;
+      border-radius: 50px;
       display: block;
       border: 1px solid rgba(255, 255, 255, 0.4);
       color: #000;
       background: #fff; }
       .login-wrap .social a:hover {
-        background: #000;
-        color: #fff;
-        border-color: #000; }
+        background: #fff;
+        color: #000;
+        border-color: none; }
 
 .form-group {
   position: relative; }
