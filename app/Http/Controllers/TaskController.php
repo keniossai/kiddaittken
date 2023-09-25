@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,7 +25,8 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('tasks.create');
+        $user = Auth::user();
+        return view('tasks.create', compact('user'));
     }
 
     /**
@@ -32,27 +34,14 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $validation = Validator::make($request->all(), [
+        $data = $request->validate([
             'title' => 'required',
             'description' => 'required',
         ]);
 
-        if ($validation->fails()) {
-            return redirect()->back()->with('error','All fields are required');;
-        } else {
-            $tasks = new Task();
+        $request->user()->tasks()->create($data);
 
-            $tasks->title = $request->title;
-            $tasks->description = $request->description;
-            $tasks->user_id = $request->user_id;
-            $tasks->completed = 0;
-            $result = $tasks->save();
-            if ($result) {
-                return redirect()->back()->with('success','Task added successfully');
-            } else {
-                return redirect()->back()->with('error','Task added successfully');
-            }
-        }
+        return back()->with('success', 'Task created');
     }
 
     /**
