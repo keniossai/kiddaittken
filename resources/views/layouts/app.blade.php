@@ -215,11 +215,12 @@
         // error message popup notification
 
         @if(Session::has('error'))
-
             toastr.error("{{ Session::get('error') }}");
-
         @endif
 
+        @foreach($errors->all() as $error)
+            toastr.error("{{ $error }}")
+        @endforeach
 
 
     </script>
