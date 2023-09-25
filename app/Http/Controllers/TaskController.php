@@ -41,7 +41,7 @@ class TaskController extends Controller
 
         $request->user()->tasks()->create($data);
 
-        return back()->with('success', 'Task created');
+        return back()->with('success', 'Task created successfully');
     }
 
     /**
