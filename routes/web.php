@@ -25,6 +25,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/user/tasks', [TaskController::class, 'index'])->name('index.task');
     Route::get('/user/tasks/create', [TaskController::class, 'create'])->name('task.create');
     Route::post('tasks/create', [TaskController::class, 'store'])->name('task.store');
+    Route::get('task/delete/{id}', [TaskController::class, 'destroy'])->name('task.delete');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
