@@ -51,25 +51,29 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
+                                            <th>Name</th>
                                             <th>Title</th>
                                             <th>Description</th>
-                                            <th>Publish Date</th>
+                                            <th>Date Created</th>
                                             <th>Status</th>
+                                            <th>Mark</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     @foreach ($tasks as $task)
                                         <tr>
                                             <td>{{ $task->id }}</td>
+                                            <td>{{ $user->name }}</td>
                                             <td>{{ $task->title }}</td>
                                             <td>{{ $task->description }}</td>
-                                            <td>{{ $task->date }}</td>
+                                            <td>{{ $task->created_at }}</td>
+                                            <td><div class="badge badge-success">Completed</div></td>
                                             <td>
-                                                <div class="badge badge-success">Completed</div>
+                                                <input type="checkbox" value="completed" name="" id="">
                                             </td>
-                                            <td><button class="btn btn-danger" id="delete-task"
-                                                    data-id='{{ $task->id }}'>Delete</button>
-                                                <a href="#" class="btn btn-primary">Edit</a>
+                                            <td>
+                                                <a href="#" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                <a href="{{ route('task.delete',$task->id) }}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
