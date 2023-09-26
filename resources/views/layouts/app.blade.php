@@ -14,6 +14,7 @@
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/toastr.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <script src="https://use.fontawesome.com/c04029533e.js"></script>
     <style>
         .btn-create{
             height: 50px;
@@ -181,6 +182,7 @@
     <script type="text/javascript" src="{{ asset('assets/js/toastr.js') }}"></script>
     {{-- <script type="text/javascript" src="{{ asset('app.js') }}"></script> --}}
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+
 
     {{-- @yield('footer') --}}
     <script>
