@@ -46,7 +46,7 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Task $task)
+    public function show(Task $task, $id)
     {
         //
     }
@@ -54,17 +54,27 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Task $task)
+    public function edit($id)
     {
-        //
+
+        $task=Task::find($id);
+        return view('tasks.update', compact('task'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        $request->user()->tasks()->update($data);
+
+        return back()->with('success', 'Task updated successfully');
     }
 
     /**
