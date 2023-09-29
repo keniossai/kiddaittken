@@ -21,7 +21,7 @@
                                 <div class="widget-heading">Pending</div>
                             </div>
                             <div class="widget-content-right">
-                                <div class="widget-numbers text-white"><span>568</span></div>
+                                <div class="widget-numbers text-white"><span>{{ $tasks->where('completed', 0)->count() }}</span></div>
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                                 <div class="widget-heading">Completed</div>
                             </div>
                             <div class="widget-content-right">
-                                <div class="widget-numbers text-white"><span>46</span></div>
+                                <div class="widget-numbers text-white"><span>{{ $tasks->where('completed')->count() }}</span></div>
                             </div>
                         </div>
                     </div>
@@ -44,6 +44,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h5>All Task</h5>
+                            <a href="{{ route('task.create') }}" class="btn btn-primary ml-auto">Create Task</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -56,7 +57,6 @@
                                             <th>Description</th>
                                             <th>Date Created</th>
                                             <th>Status</th>
-                                            <th>Mark</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -66,13 +66,16 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $task->title }}</td>
                                             <td>{{ $task->description }}</td>
-                                            <td>{{ $task->created_at }}</td>
-                                            <td><div class="badge badge-success">Completed</div></td>
+                                            <td>{{ $task->created_at->format("d/m/y") }}</td>
                                             <td>
-                                                <input type="checkbox" value="completed" name="" id="">
+                                                @if($task->completed == 0)
+                                                <div class="badge badge-danger">In Progress</div>
+                                                @else
+                                                <div class="badge badge-success">Completed</div>
+                                                @endif
                                             </td>
-                                            <td>
-                                                <a href="{{ route('task.edit',$task->id) }}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <td class="d-flex">
+                                                <a href="{{ route('task.edit',$task->id) }}" class="btn btn-primary mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                                 <a href="{{ route('task.delete',$task->id) }}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
