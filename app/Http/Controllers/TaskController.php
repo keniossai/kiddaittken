@@ -65,15 +65,18 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $data = $request->validate([
+        $request->validate([
             'title' => 'required',
             'description' => 'required',
         ]);
 
-        $request->user()->tasks()->update($data);
-
+        $request->user()->tasks()->find($id)->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'completed' => $request->completed,
+        ]);
         return back()->with('success', 'Task updated successfully');
     }
 
@@ -85,4 +88,6 @@ class TaskController extends Controller
         Task::where('id', $id)->delete();
         return back()->with('success', 'Task deleted successfully');
     }
+
+    
 }
