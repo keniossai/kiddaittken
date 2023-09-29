@@ -22,3 +22,4 @@ Route::get('/tasks', [TaskController::class, 'all_task']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+

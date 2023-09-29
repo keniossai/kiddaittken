@@ -152,35 +152,16 @@
                                 </a>
                             </li>
 
-                            <li>
-                                <a href="#">
-                                    My Task
-                                </a>
-                                <ul class="mm-collapse">
-                                    <li>
-                                        <a href="{{ route('index.task') }}" class="mm-active">
-                                            List
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('task.create') }}" class="mm-active">
-                                            Add New
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
             {{ $slot }}
-            {{-- <script src="https://maps.google.com/maps/api/js?sensor=true"></script> --}}
         </div>
     </div>
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/toastr.js') }}"></script>
-    {{-- <script type="text/javascript" src="{{ asset('app.js') }}"></script> --}}
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 
 
@@ -223,6 +204,7 @@
         @foreach($errors->all() as $error)
             toastr.error("{{ $error }}")
         @endforeach
+
 
 
     </script>

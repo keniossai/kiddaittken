@@ -13,7 +13,7 @@ class LoginController extends Controller
         $request->authenticate();
 
         $user = auth()->user();
-        
+
         return response()->json([
             'message' => 'Login successful',
             'data' => $user->append('token')

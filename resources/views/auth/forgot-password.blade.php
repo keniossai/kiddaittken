@@ -13,7 +13,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
                         <h4 class="mb-4 text-center login-header">{{ __('Forgot your password? ') }}</h4>
-                        <form method="POST" action="{{ route('login') }}" class="signin-form">
+                        <form method="POST" action="{{ route('password.request') }}" class="signin-form">
                             @csrf
                             <div class="form-group">
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
