@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\LoginController;
+use App\Http\Controllers\API\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,7 @@ use App\Http\Controllers\API\LoginController;
 */
 
 Route::get('/login', [LoginController::class, 'authenticate']);
+Route::get('/tasks', [TaskController::class, 'all_task']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
